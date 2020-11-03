@@ -4,11 +4,18 @@
       <ion-button routerLink="/"><ion-icon slot="icon-only" name="arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title>
-      View
+      <span *ngIf="todo">{{todo.title}}</span>
     </ion-title>
+    <ion-buttons slot="end">
+      <ion-button (click)="save()"> <ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
+      <ion-button (click)="delete()"> <ion-icon slot="icon-only" name="trash"></ion-icon></ion-button>
+    </ion-buttons>
   </ion-toolbar>
 </ion-header>
 
 <ion-content padding>
+  <ion-item>
+    <ion-textarea value="{{todo.description}}" rows="10" *ngIf="todo"></ion-textarea>
+  </ion-item>
 
 </ion-content>
