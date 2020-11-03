@@ -37,7 +37,7 @@ export class RestService {
 
   getTodos(): Observable<any> {
 
-    const apiUrl = "http://localhost:3000/api/todos";
+    const apiUrl = "http://localhost:3000/api/v1/todos";
 
     return this.http.get(apiUrl, httpOptions).pipe(
       map(this.extractData),
@@ -47,7 +47,7 @@ export class RestService {
 
   getTodo(id:any): Observable<any> {
 
-    const apiUrl = "http://localhost:3000/api/todo/" + id;
+    const apiUrl = "http://localhost:3000/api/v1/todo/" + id;
 
     return this.http.get(apiUrl, httpOptions).pipe(
       map(this.extractData),

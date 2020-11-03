@@ -15,18 +15,23 @@
 </ion-header>
 
 <ion-content>
-  <ion-list>
+  <ion-list *ngFor="let todo of todos">
     <ion-item-sliding #item>
       <ion-item>
-        Laundry
+        {{todo.title}}
       </ion-item>
       <ion-item-options side="start">
-        <ion-button color="light">Done</ion-button>
+        <button ion-button color="light" routerLink="/todo/{{todo._id}}">Done</button>
       </ion-item-options>
       <ion-item-options side="end">
-        <ion-button color="light">Edit</ion-button>
-        <ion-button color="danger">Delete</ion-button>
+        <button ion-button color="light" routerLink="/view/{{todo._id}}">Edit</button>
+        <button ion-button color="danger" routerLink="/todo/{{todo._id}}">Delete</button>
       </ion-item-options>
     </ion-item-sliding>
   </ion-list>
+  <!--
+    <div *ngIf="selectedItem" padding>
+      You navigated here from <b>{{selectedItem.title }}</b>
+    </div>
+  -->
 </ion-content>
