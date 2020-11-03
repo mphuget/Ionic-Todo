@@ -4,7 +4,7 @@
       <ion-button routerLink="/"><ion-icon slot="icon-only" name="arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title>
-      add
+      Add a todo
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="save()"> <ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
@@ -15,5 +15,18 @@
 
 
 <ion-content padding>
-  A new todo
+  <form [formGroup]="todo">
+      <ion-item>
+        <ion-label>Todo</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-input type="text" formControlName="title"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label>Description</ion-label>
+      </ion-item>
+      <ion-item>
+        <ion-textarea formControlName="description" rows="10"></ion-textarea>
+      </ion-item>
+  </form>
 </ion-content>

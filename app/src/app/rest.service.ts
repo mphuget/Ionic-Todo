@@ -55,4 +55,13 @@ export class RestService {
 
   }
 
+  createTodo(data:any): Observable<any> {
+
+    const apiUrl = "http://localhost:3000/api/v1/todo/";
+
+    return this.http.post(apiUrl, data, httpOptions).pipe(
+      catchError(this.handleError));
+
+  }
+
 }
