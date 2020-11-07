@@ -17,9 +17,13 @@
 <ion-content>
   <ion-list *ngFor="let todo of todos">
     <ion-item-sliding #item>
-      <ion-item>
+      <ion-item *ngIf="todo.done" color="success">
         {{todo.title}}
       </ion-item>
+      <ion-item *ngIf="!todo.done" color="warning">
+        {{todo.title}}
+      </ion-item>
+
       <ion-item-options side="start">
         <button ion-button (click)="done([todo._id])" color="light">Done</button>
       </ion-item-options>
