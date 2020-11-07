@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { LoadingController } from '@ionic/angular';
 import { RestService } from '../rest.service';
-import { ActivatedRoute, ParamMap } from '@angular/router';
+import { ActivatedRoute, ParamMap, Router } from '@angular/router';
 
 @Component({
   selector: 'app-view',
@@ -12,8 +12,13 @@ export class ViewPage implements OnInit {
   todo : any;
   api : RestService;
   id : string;
+  title : string;
+  description : string;
 
-  constructor(public restapi: RestService, public loadingController: LoadingController, private route: ActivatedRoute) {
+  constructor(public restapi: RestService, 
+    public loadingController: LoadingController, 
+    private route: ActivatedRoute, 
+    public router : Router) {
 
     this.api = restapi;
 
@@ -29,6 +34,8 @@ export class ViewPage implements OnInit {
       .subscribe(res => {
         console.log(res);
         this.todo = res;
+        this.title = this.todo.title;
+        this.description = this.todo.description;
         loading.dismiss();
       }, err => {
         console.log(err);
@@ -37,7 +44,25 @@ export class ViewPage implements OnInit {
 
   }
 
+  async saveTodo(){
+    await this.api.updateTodo(this.todo._id, this.todo)
+    .subscribe(res => {
+        console.log(res);
+      }, (err) => {
+        console.log(err);
+      });
+  }
+
   save() {
+
+    console.log(this.description);
+    console.log(this.title);
+    console.log(this.todo._id);
+
+    this.todo.title = this.title;
+    this.todo.description = this.description;
+
+    this.saveTodo();
 
   }
 

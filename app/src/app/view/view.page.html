@@ -4,7 +4,7 @@
       <ion-button routerLink="/"><ion-icon slot="icon-only" name="arrow-round-back"></ion-icon></ion-button>
     </ion-buttons>
     <ion-title>
-      <span *ngIf="todo">{{todo.title}}</span>
+      <span *ngIf="todo" ngDefaultControl [(ngModel)]="title">{{todo.title}}</span>
     </ion-title>
     <ion-buttons slot="end">
       <ion-button (click)="save()"> <ion-icon slot="icon-only" name="save"></ion-icon></ion-button>
@@ -15,7 +15,12 @@
 
 <ion-content padding>
   <ion-item>
-    <ion-textarea value="{{todo.description}}" rows="10" *ngIf="todo"></ion-textarea>
+    <ion-input value="{{todo.title}}" rows="10" *ngIf="todo" ngDefaultControl [(ngModel)]="title"></ion-input>
+  </ion-item>
+
+
+  <ion-item>
+    <ion-textarea value="{{todo.description}}" rows="10" *ngIf="todo" ngDefaultControl [(ngModel)]="description"></ion-textarea>
   </ion-item>
 
 </ion-content>
