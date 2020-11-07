@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { LoadingController, NavController } from '@ionic/angular';
 import { RestService } from '../rest.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -13,7 +14,10 @@ export class HomePage {
   todos : any;
   api : RestService;
 
-  constructor(public restapi: RestService, public loadingController: LoadingController, public navController : NavController) {
+  constructor(public restapi: RestService, 
+    public loadingController: LoadingController, 
+    public navController : NavController, 
+    public router : Router) {
 
     this.api = restapi;
   }
@@ -36,12 +40,22 @@ export class HomePage {
 
   }
 
+  async deleteTodo(id:any){
+    await this.api.deleteTodo(id)
+    .subscribe(res => {
+        console.log(res);
+        this.ngOnInit();
+      }, (err) => {
+        console.log(err);
+      });
+  }
+
   done(id: any) {
     console.log("done");
   }
 
   delete(id:any) {
-    console.log("delete");
+    this.deleteTodo(id);
   }
 
   ngOnInit() {
