@@ -21,7 +21,7 @@
         {{todo.title}}
       </ion-item>
       <ion-item-options side="start">
-        <button ion-button color="light" routerLink="/todo/{{todo._id}}">Done</button>
+        <button ion-button (click)="done([todo._id])" color="light">Done</button>
       </ion-item-options>
       <ion-item-options side="end">
         <button ion-button color="light" routerLink="/view/{{todo._id}}">Edit</button>

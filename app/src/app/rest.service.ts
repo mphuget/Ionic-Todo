@@ -80,4 +80,11 @@ export class RestService {
       catchError(this.handleError));
   }
 
+  doneTodo(id:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/api/v1/todo/" + id + "/done";
+
+    return this.http.post(apiUrl, httpOptions).pipe(
+      catchError(this.handleError));
+  }
 }

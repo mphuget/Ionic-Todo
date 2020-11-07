@@ -50,8 +50,19 @@ export class HomePage {
       });
   }
 
+  async doneTodo(id:any){
+    await this.api.doneTodo(id)
+    .subscribe(res => {
+        console.log(res);
+        this.ngOnInit();
+      }, (err) => {
+        console.log(err);
+      });
+  }
+
   done(id: any) {
     console.log("done");
+    this.doneTodo(id);
   }
 
   delete(id:any) {
