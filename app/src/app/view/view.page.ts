@@ -54,6 +54,16 @@ export class ViewPage implements OnInit {
       });
   }
 
+  async deleteTodo(){
+    await this.api.deleteTodo(this.todo._id)
+    .subscribe(res => {
+        console.log(res);
+        this.router.navigate(['/']);
+      }, (err) => {
+        console.log(err);
+      });
+  }
+
   save() {
 
     console.log(this.description);
@@ -69,6 +79,8 @@ export class ViewPage implements OnInit {
 
   delete() {
 
+    this.deleteTodo();
+    
   }
 
   ngOnInit() {

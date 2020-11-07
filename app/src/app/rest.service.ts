@@ -72,4 +72,12 @@ export class RestService {
       catchError(this.handleError));
   }
 
+  deleteTodo(id:any) : Observable<any> {
+
+    const apiUrl = "http://localhost:3000/api/v1/todo/" + id;
+
+    return this.http.delete(apiUrl, httpOptions).pipe(
+      catchError(this.handleError));
+  }
+
 }
