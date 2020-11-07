@@ -48,6 +48,7 @@ export class ViewPage implements OnInit {
     await this.api.updateTodo(this.todo._id, this.todo)
     .subscribe(res => {
         console.log(res);
+        this.router.navigate(['/']);
       }, (err) => {
         console.log(err);
       });
