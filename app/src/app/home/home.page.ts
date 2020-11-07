@@ -48,5 +48,8 @@ export class HomePage {
     this.getTodos();
   }
 
+  ionViewWillEnter() {
+    this.ngOnInit();
+  }
 
 }
