@@ -31,7 +31,9 @@ export class HomePage {
     await this.api.getTodos()
       .subscribe(res => {
         console.log(res);
-        this.todos = res;
+        this.todos = res.filter((aTodo) => {
+          return aTodo.done == false
+        });
         loading.dismiss();
       }, err => {
         console.log(err);
